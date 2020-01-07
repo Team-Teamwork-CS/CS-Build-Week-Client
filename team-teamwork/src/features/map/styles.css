@@ -1,0 +1,17 @@
+.tile {
+    display: inline-flex
+}
+
+.grass {
+    background-image: url("/tiles/gras.png");
+    background-color: greenyellow;
+}
+
+.dirt {
+    background-image:  url("/tiles/dirt4.png");
+}
+
+.treasure {
+    background-image: url('/tiles/treasures.png');
+}
+
