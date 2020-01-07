@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Axios from 'axios'
 
-const Home = props => {
+function Home() {
     const [rooms, setRooms] = useState()
 
     useEffect(() => {
