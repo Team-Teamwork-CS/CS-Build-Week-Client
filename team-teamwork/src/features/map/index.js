@@ -1,55 +1,56 @@
 import React from "react";
-import { connect } from 'react-redux'
-import {SPRITE_SIZE} from '../../config/constants'
-import './styles.css'
+import { connect } from "react-redux";
+import { SPRITE_SIZE } from "../../config/constants";
+import "./styles.css";
 
 function getTileSprite(type) {
-  switch(type) {
+  switch (type) {
     case 0:
-      return "grass"
-    case 5: 
-      return "dirt"
+      return "grass";
+    case 5:
+      return "dirt";
     case 6:
-      return "treasure"
+      return "treasure";
   }
 }
 
 function MapTile(props) {
-  return <div 
-  className={`tile ${getTileSprite(props.tile)}`}
-  style= {{
-    height: SPRITE_SIZE,
-    width: SPRITE_SIZE
-  }}
->
-  
-</div>
+  return (
+    <div
+      className={`tile ${getTileSprite(props.tile)}`}
+      style={{
+        height: SPRITE_SIZE,
+        width: SPRITE_SIZE
+      }}
+    ></div>
+  );
 }
 
 function MapRow(props) {
-  return <div classname="row">
-    {
-      props.tiles.map(tile => <MapTile tile={tile} />)
-    }
-  </div>
+  return (
+    <div className="row" style={{ height: 40 }}>
+      {props.tiles.map(tile => (
+        <MapTile tile={tile} />
+      ))}
+    </div>
+  );
 }
 
 function Map(props) {
   return (
     <div
       style={{
-        position: 'relative',
-        top: '0px',
+        position: "relative",
+        top: "0px",
         left: "0px",
         width: "800px",
         height: "400px",
-        backgroundColor: "green",
-        border: "4px solid white"
+        backgroundColor: "green"
       }}
     >
-      {
-        props.tiles.map(row => <MapRow tiles={row} />)        
-      }
+      {props.tiles.map(row => (
+        <MapRow tiles={row} />
+      ))}
     </div>
   );
 }
@@ -57,7 +58,7 @@ function Map(props) {
 function mapStateToProps(state) {
   return {
     tiles: state.map.tiles
-  }
+  };
 }
 
 export default connect(mapStateToProps)(Map);
