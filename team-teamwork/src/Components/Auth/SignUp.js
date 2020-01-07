@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
+import Axios from 'axios'
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -13,7 +14,11 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
-function Copyright() {
+function Copyright(props) {
+ 
+
+  
+
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
@@ -46,8 +51,35 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignUp() {
+export default function SignUp(props) {
   const classes = useStyles();
+
+  const [inputs, setInputs] = useState({
+    username: "",
+    password1: "",
+    password2: ""
+  })
+
+  const handleChange = e => {
+    e.persist()
+    setInputs(inputs => ({
+      ...inputs,
+      [e.target.name]: e.target.value
+    }))
+    console.log(inputs)
+  }
+
+  const handleLogin = e => {
+    e.preventDefault()
+    Axios
+      .post("https://lambda-mud-test.herokuapp.com/api/registration/", inputs)
+      .then(res => {
+        localStorage.setItem("csbuildweek1", res.data.key)        
+      })
+      .catch(err => {
+        console.log("error", err)
+      })
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -59,18 +91,19 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form onSubmit={handleLogin} className={classes.form} >
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
+              <TextField                
+                name="username"
+                value={inputs.username}
                 variant="outlined"
                 required
                 fullWidth
-                id="firstName"
-                label="First Name"
+                name="username"
+                label="username"
                 autoFocus
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -78,10 +111,10 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
+                name="password1"
+                value={inputs.password1}
+                label="password"           
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -89,30 +122,13 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                name="password2"
+                value={inputs.password2}
+                label="Confirm password"
+                onChange={handleChange}
               />
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid>
+            
           </Grid>
           <Button
             type="submit"
