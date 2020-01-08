@@ -11,10 +11,10 @@ import Inventory from "./Components/Inventory/Inventory";
 function App() {
   return (
     <div className="App">
-      {/* <SignIn />
+      <SignIn />
       <SignUp />
       <Home />
-      <Inventory /> */}
+      <Inventory />
       <div className="gameContainer" style={{ maxWidth: 1400, margin: "auto" }}>
         <World />
         <Dialog />
