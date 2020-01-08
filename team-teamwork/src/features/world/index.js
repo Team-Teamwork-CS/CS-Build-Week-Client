@@ -18,7 +18,8 @@ function World(props) {
         position: "relative",
         width: "800px",
         height: "800px",
-        margin: "20px auto"
+        margin: "20px auto",
+        gridRow: "1/3"
       }}
     >
       <Map tiles={tiles} />
