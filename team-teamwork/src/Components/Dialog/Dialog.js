@@ -34,8 +34,10 @@ const Dialog = props => {
             height: 300
           }}
         >
-          {props.text.map(t => (
-            <li style={{ paddingTop: 20 }}>{t}</li>
+          {props.text.map((t, index) => (
+            <li style={{ paddingTop: 20 }} key={t + index}>
+              {t}
+            </li>
           ))}
         </ul>
       </div>
