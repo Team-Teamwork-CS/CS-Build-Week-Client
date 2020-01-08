@@ -14,5 +14,5 @@
 .treasure {
   background-image: url("/tiles/treasures.png");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
 }

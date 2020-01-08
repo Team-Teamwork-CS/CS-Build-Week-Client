@@ -5,6 +5,8 @@ import Home from "./Components/home/home.js";
 // import Inventory from "./Components/home/inventory.js";
 
 import World from "./features/world";
+import Dialog from "./Components/Dialog/Dialog";
+import Inventory from "./Components/Inventory/Inventory";
 
 function App() {
   return (
@@ -13,8 +15,10 @@ function App() {
       <SignUp />
       <Home />
       <Inventory /> */}
-      <div>
+      <div className="gameContainer" style={{ maxWidth: 1400, margin: "auto" }}>
         <World />
+        <Dialog />
+        <Inventory />
       </div>
     </div>
   );

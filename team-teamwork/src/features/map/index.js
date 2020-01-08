@@ -28,9 +28,9 @@ function MapTile(props) {
 
 function MapRow(props) {
   return (
-    <div className="row" style={{ height: 40 }}>
-      {props.tiles.map(tile => (
-        <MapTile tile={tile} />
+    <div className="row" style={{ height: 80 }}>
+      {props.tiles.map((tile, index) => (
+        <MapTile tile={tile} key={`mapTile ${index}`} />
       ))}
     </div>
   );
@@ -44,12 +44,12 @@ function Map(props) {
         top: "0px",
         left: "0px",
         width: "800px",
-        height: "400px",
+        height: "800px",
         backgroundColor: "green"
       }}
     >
-      {props.tiles.map(row => (
-        <MapRow tiles={row} />
+      {props.tiles.map((row, index) => (
+        <MapRow tiles={row} key={`mapRow ${index}`} />
       ))}
     </div>
   );
