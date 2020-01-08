@@ -44,8 +44,8 @@ function Map(props) {
         top: "0px",
         left: "0px",
         width: "800px",
-        height: "800px",
-        backgroundColor: "green"
+        height: "400px"        
+        
       }}
     >
       {props.tiles.map((row, index) => (

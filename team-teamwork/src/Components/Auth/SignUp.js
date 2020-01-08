@@ -72,7 +72,7 @@ export default function SignUp(props) {
   const handleLogin = e => {
     e.preventDefault()
     Axios
-      .post("https://lambda-mud-test.herokuapp.com/api/registration/", inputs)
+      .post('https://teamwork-mud.herokuapp.com/api/registration/', inputs)
       .then(res => {
         localStorage.setItem("csbuildweek1", res.data.key)        
       })

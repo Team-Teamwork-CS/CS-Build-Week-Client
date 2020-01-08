@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
+import Axios from 'axios'
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -47,6 +48,35 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function SignIn() {
+  const [inputs, setInputs] = useState({
+    username: "",
+    password: ""
+  })
+
+  const handleChange = e => {
+    e.persist()
+    setInputs(inputs => ({
+      ...inputs,
+      [e.target.name]: e.target.value
+    }))
+    console.log("login", inputs)
+  }
+
+  const handleLogin = e => {
+    Axios
+      .post("https://teamwork-mud.herokuapp.com/api/login/", inputs)
+      .then(res => {
+        localStorage.setItem("csbuildweek1", res.data.key)
+        setInputs({
+          username: "",
+          password: ""
+        })
+      .catch(err => {
+        console.log("err", err)
+      })
+    })
+  }
+
   const classes = useStyles();
 
   return (
@@ -59,17 +89,18 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form onSubmit={handleLogin} className={classes.form} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
+            name="username"
+            value={inputs.username}
+            label="username"
+            id="username"            
             autoFocus
+            onChange={handleChange}
           />
           <TextField
             variant="outlined"
@@ -77,15 +108,13 @@ export default function SignIn() {
             required
             fullWidth
             name="password"
+            value={inputs.password}
             label="Password"
             type="password"
             id="password"
             autoComplete="current-password"
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
+            onChange={handleChange}
+          />          
           <Button
             type="submit"
             fullWidth

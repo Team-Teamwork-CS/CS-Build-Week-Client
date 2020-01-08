@@ -13,6 +13,7 @@ import Inventory from "./Components/Inventory/Inventory";
 function App() {
   return (
     <div className="App">
+
       <Router>
         <Route
           exact
@@ -44,6 +45,7 @@ function App() {
           )}
         />
       </Router>
+
     </div>
   );
 }
