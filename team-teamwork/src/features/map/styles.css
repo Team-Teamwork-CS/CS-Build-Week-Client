@@ -1,17 +1,22 @@
 .tile {
-    display: inline-flex
+  display: inline-flex;
 }
 
 .grass {
-    background-image: url("/tiles/gras.png");
-    background-color: greenyellow;
+  background-image: url("/tiles/gras.png");
+  background-color: greenyellow;
 }
 
 .dirt {
-    background-image:  url("/tiles/dirt4.png");
+  background-image: url("/tiles/dirt4.png");
 }
 
 .treasure {
+<<<<<<< HEAD
     background-image: url("/tiles/coin.svg");
+=======
+  background-image: url("/tiles/treasures.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+>>>>>>> 5009a68ef6fe2477931060718bdb9d937f4a2df6
 }
-
