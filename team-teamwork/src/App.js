@@ -16,9 +16,9 @@ function App() {
       <Home />
       <Inventory />
       <div className="gameContainer" style={{ maxWidth: 1400, margin: "auto" }}>
-        <World />
-        <Dialog />
-        <Inventory />
+      <World />
+      <Dialog />
+      <Inventory />
       </div>
     </div>
   );
