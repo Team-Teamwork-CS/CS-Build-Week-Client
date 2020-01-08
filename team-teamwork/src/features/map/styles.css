@@ -12,6 +12,6 @@
 }
 
 .treasure {
-    background-image: url('/tiles/treasures.png');
+    background-image: url("/tiles/coin.svg");
 }
 
