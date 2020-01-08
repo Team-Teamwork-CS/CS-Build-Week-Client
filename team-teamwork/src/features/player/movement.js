@@ -42,12 +42,6 @@ export default function handleMovement(player) {
   }
 
   function attemptMove(direction) {
-<<<<<<< HEAD
-    const oldPos = store.getState().player.position
-    const newPos = getNewPosition(oldPos, direction)
-    if(observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos)) {
-      dispatchMove(newPos)
-=======
     const oldPos = store.getState().player.position;
     const newPos = getNewPosition(oldPos, direction);
 
@@ -56,7 +50,6 @@ export default function handleMovement(player) {
       observeImpassable(oldPos, newPos)
     ) {
       dispatchMove(newPos);
->>>>>>> 5009a68ef6fe2477931060718bdb9d937f4a2df6
     }
   }
 

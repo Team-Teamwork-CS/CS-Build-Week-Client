@@ -12,11 +12,7 @@
 }
 
 .treasure {
-<<<<<<< HEAD
-    background-image: url("/tiles/coin.svg");
-=======
   background-image: url("/tiles/treasures.png");
   background-repeat: no-repeat;
   background-size: contain;
->>>>>>> 5009a68ef6fe2477931060718bdb9d937f4a2df6
 }

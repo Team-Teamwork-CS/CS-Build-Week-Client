@@ -6,18 +6,12 @@ import { tiles } from "../../data/map/1";
 import store from "../../config/store";
 
 function World(props) {
-<<<<<<< HEAD
-  store.dispatch({type: 'ADD_TILES', payload: {
-    tiles
-  }})
-=======
   store.dispatch({
     type: "ADD_TILES",
     payload: {
       tiles
     }
   });
->>>>>>> 5009a68ef6fe2477931060718bdb9d937f4a2df6
   return (
     <div
       style={{
@@ -30,10 +24,6 @@ function World(props) {
     >
       <Map tiles={tiles} />
       <Player />
-<<<<<<< HEAD
-      
-=======
->>>>>>> 5009a68ef6fe2477931060718bdb9d937f4a2df6
     </div>
   );
 }
