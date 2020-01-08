@@ -3,12 +3,18 @@
 }
 
 .grass {
-  background-image: url("/tiles/gras.png");
-  background-color: greenyellow;
+  background-image: url("/tiles/grass.png");
+  background-size: contain;
 }
 
-.dirt {
-  background-image: url("/tiles/dirt4.png");
+.bush {
+  background-image: url("/tiles/LongLeaves_s.jpg");
+  background-size: contain;
+}
+
+.rock {
+  background-image: url("/tiles/Rock1Seamless.png");
+  background-size: contain;
 }
 
 .treasure {

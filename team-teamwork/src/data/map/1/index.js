@@ -1,12 +1,67 @@
 export const tiles = [
-  [1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
-  [0, 0, 0, 0, 5, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 5],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 5],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 6]
+  [1, 2, 3, 3, 2, 2, 1, 1, 1, 3],
+  [1, 2, 3, 3, 2, 2, 1, 1, 1, 3].reverse(),
+  [1, 2, 3, 3, 2, 2, 1, 1, 1, 3],
+  [1, 2, 3, 3, 2, 2, 1, 1, 1, 3].reverse(),
+  [1, 2, 3, 3, 2, 2, 1, 1, 1, 3],
+  [1, 2, 3, 3, 2, 2, 1, 1, 1, 3].reverse(),
+  [1, 2, 3, 3, 2, 2, 1, 1, 1, 3],
+  [1, 2, 3, 3, 2, 2, 1, 1, 1, 3].reverse(),
+  [1, 2, 3, 3, 2, 2, 1, 1, 1, 3],
+  [1, 2, 3, 3, 2, 2, 1, 1, 1, 6]
 ];
+
+export const createTileLayout = data => {
+  let container = [];
+
+  data.rooms.forEach((d, index) => {
+    const item = JSON.parse(d);
+
+    if (item.name === "Grass") {
+      container.push(1);
+    } else if (item.name === "Bush") {
+      container.push(2);
+    } else if (item.name === "Rock") {
+      container.push(3);
+    }
+  });
+  console.log("container", container);
+
+  const array1 = container.slice(0, 10);
+  const array2 = container.slice(10, 20);
+  const array3 = container.slice(20, 30);
+  const array4 = container.slice(30, 40);
+  const array5 = container.slice(40, 50);
+  const array6 = container.slice(50, 60);
+  const array7 = container.slice(60, 70);
+  const array8 = container.slice(70, 80);
+  const array9 = container.slice(80, 90);
+  const array10 = container.slice(90, 100);
+  console.log("array1", array1);
+
+  // let testArray = [
+  //   array1,
+  //   array2,
+  //   [1, 2, 3, 3, 2, 2, 1, 1, 1, 3],
+  //   [1, 2, 3, 3, 2, 2, 1, 1, 1, 3].reverse(),
+  //   [1, 2, 3, 3, 2, 2, 1, 1, 1, 3],
+  //   [1, 2, 3, 3, 2, 2, 1, 1, 1, 3].reverse(),
+  //   [1, 2, 3, 3, 2, 2, 1, 1, 1, 3],
+  //   [1, 2, 3, 3, 2, 2, 1, 1, 1, 3].reverse(),
+  //   [1, 2, 3, 3, 2, 2, 1, 1, 1, 3],
+  //   [1, 2, 3, 3, 2, 2, 1, 1, 1, 6]
+  // ];
+
+  return [
+    array1,
+    array2,
+    array3,
+    array4,
+    array5,
+    array6,
+    array7,
+    array8,
+    array9,
+    array10
+  ];
+};

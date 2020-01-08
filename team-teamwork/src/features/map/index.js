@@ -5,10 +5,12 @@ import "./styles.css";
 
 function getTileSprite(type) {
   switch (type) {
-    case 0:
+    case 1:
       return "grass";
-    case 5:
-      return "dirt";
+    case 2:
+      return "bush";
+    case 3:
+      return "rock";
     case 6:
       return "treasure";
   }
@@ -27,6 +29,7 @@ function MapTile(props) {
 }
 
 function MapRow(props) {
+  console.log(props);
   return (
     <div className="row" style={{ height: 80 }}>
       {props.tiles.map((tile, index) => (
@@ -37,6 +40,14 @@ function MapRow(props) {
 }
 
 function Map(props) {
+  const display = () => {
+    if (props.tiles.length > 0) {
+      return props.tiles.map((row, index) => (
+        <MapRow tiles={row} key={`mapRow ${index}`} />
+      ));
+    }
+  };
+
   return (
     <div
       style={{
@@ -45,12 +56,11 @@ function Map(props) {
         left: "0px",
         width: "800px",
         height: "800px",
-        backgroundColor: "green"
+        backgroundColor: "#BFC9CA"
       }}
     >
-      {props.tiles.map((row, index) => (
-        <MapRow tiles={row} key={`mapRow ${index}`} />
-      ))}
+      {display()}
+      {/*  */}
     </div>
   );
 }

@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Player from "../player";
 import Map from "../map/";
+import axios from "axios";
 
-import { tiles } from "../../data/map/1";
+import { createTileLayout } from "../../data/map/1";
 import store from "../../config/store";
 
 function World(props) {
-  store.dispatch({
-    type: "ADD_TILES",
-    payload: {
-      tiles
-    }
-  });
+  useEffect(() => {
+    axios
+      .get("https://teamwork-mud.herokuapp.com/api/adv/rooms/")
+      .then(res => {
+        console.log("res.data", res.data);
+        store.dispatch({
+          type: "ADD_TILES",
+          payload: {
+            tiles: createTileLayout(res.data)
+          }
+        });
+      })
+      .catch(err => console.log(err));
+  }, []);
+
   return (
     <div
       style={{
@@ -22,7 +32,7 @@ function World(props) {
         gridRow: "1/3"
       }}
     >
-      <Map tiles={tiles} />
+      <Map />
       <Player />
     </div>
   );
