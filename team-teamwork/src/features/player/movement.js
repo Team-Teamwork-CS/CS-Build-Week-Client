@@ -85,21 +85,12 @@ export default function handleMovement(player) {
 
   window.addEventListener("keydown", e => {
     if (
-<<<<<<< HEAD
-      e.keycode === 37 ||
-      e.keycode === 38 ||
-      e.keycode === 39 ||
-      e.keycode === 40 ||
-    ) {
-    handleKeyDown(e)
-=======
       e.keyCode === 37 ||
       e.keyCode === 38 ||
       e.keyCode === 39 ||
       e.keyCode === 40
     ) {
       handleKeyDown(e);
->>>>>>> 2da90351435bc4be21a98b90ec1d312e28c23c90
     }
   });
 

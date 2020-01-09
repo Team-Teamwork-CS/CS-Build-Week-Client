@@ -1,0 +1,45 @@
+.tile {
+    display: inline-flex;
+  }
+  
+  .shield {
+    background-image: url("/tiles/a_shield_round.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  
+  .sword {
+    background-image: url("/tiles/sword.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  
+  .axe {
+    background-image: url("/tiles/w_axe_war.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  
+  .chainBoots {
+    background-image: url("/tiles/chain_boots.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  
+  .goldSkull {
+    background-image: url("/tiles/goldskull.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  
+  .bow {
+    background-image: url("/tiles/bowset.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }

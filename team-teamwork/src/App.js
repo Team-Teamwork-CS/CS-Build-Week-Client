@@ -9,6 +9,7 @@ import Home from "./Components/home/home.js";
 import World from "./features/world";
 import Dialog from "./Components/Dialog/Dialog";
 import Inventory from "./Components/Inventory/Inventory";
+import Store from "./Components/store/store"
 
 const Container = () => {
   return (
@@ -16,6 +17,7 @@ const Container = () => {
       <World />
       <Dialog />
       <Inventory />
+      <Store />
     </div>
   );
 };
