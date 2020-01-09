@@ -6,13 +6,19 @@ import "./styles.css";
 function getTileSprite(type) {
   switch (type) {
     case 1:
-      return "grass";
+      return "mountain";
     case 2:
-      return "bush";
+      return "forest";
     case 3:
-      return "rock";
-    case 6:
-      return "treasure";
+      return "rough";
+    case 4: 
+      return "desert";
+    case 5: 
+      return "bush";
+    case 6: 
+      return "grasslands";
+    case 7:
+      return "river"
   }
 }
 
