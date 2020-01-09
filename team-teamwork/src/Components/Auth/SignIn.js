@@ -78,7 +78,7 @@ export default function SignIn(props) {
         props.history.push("/game");
       })
       .catch(err => {
-        console.log("err", err.response.data);
+        console.log("err", err);
       });
   };
 
