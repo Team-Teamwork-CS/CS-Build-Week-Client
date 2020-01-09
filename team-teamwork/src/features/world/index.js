@@ -32,7 +32,7 @@ function World(props) {
         store.dispatch({
           type: "SET_PLAYER",
           payload: {
-            position: [digits[1] * 80, digits[0] * 80]
+            position: [digits[1] ? digits[1] * 80 : 0, digits[0] * 80]
           }
         });
         store.dispatch({
