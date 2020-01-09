@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import Axios from 'axios'
+import React, { useState } from "react";
+import axios from "axios";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -47,35 +47,40 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignIn() {
+export default function SignIn(props) {
   const [inputs, setInputs] = useState({
     username: "",
     password: ""
-  })
+  });
 
   const handleChange = e => {
-    e.persist()
+    e.persist();
     setInputs(inputs => ({
       ...inputs,
       [e.target.name]: e.target.value
-    }))
-    console.log("login", inputs)
-  }
+    }));
+    console.log("login", inputs);
+  };
 
   const handleLogin = e => {
-    Axios
+    e.preventDefault();
+    axios
       .post("https://teamwork-mud.herokuapp.com/api/login/", inputs)
       .then(res => {
-        localStorage.setItem("csbuildweek1", res.data.key)
         setInputs({
           username: "",
           password: ""
-        })
-      .catch(err => {
-        console.log("err", err)
+        });
+        localStorage.setItem("token", res.data.key);
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Token ${res.data.key}`;
+        props.history.push("/game");
       })
-    })
-  }
+      .catch(err => {
+        console.log("err", err.response.data);
+      });
+  };
 
   const classes = useStyles();
 
@@ -98,7 +103,7 @@ export default function SignIn() {
             name="username"
             value={inputs.username}
             label="username"
-            id="username"            
+            id="username"
             autoFocus
             onChange={handleChange}
           />
@@ -114,7 +119,7 @@ export default function SignIn() {
             id="password"
             autoComplete="current-password"
             onChange={handleChange}
-          />          
+          />
           <Button
             type="submit"
             fullWidth
@@ -125,13 +130,9 @@ export default function SignIn() {
             Sign In
           </Button>
           <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
+            <Grid item xs></Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="signup" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
