@@ -70,7 +70,14 @@ export default function handleMovement(player) {
   }
 
   window.addEventListener("keydown", e => {
-    handleKeyDown(e);
+    if (
+      e.keycode === 37 ||
+      e.keycode === 38 ||
+      e.keycode === 39 ||
+      e.keycode === 40 ||
+    ) {
+    handleKeyDown(e)
+    }
   });
 
   return player;
