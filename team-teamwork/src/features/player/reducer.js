@@ -8,6 +8,10 @@ const playerReducer = (state = initialState, action) => {
       return {
         ...action.payload
       };
+    case "SET_PLAYER":
+      return {
+        ...action.payload
+      };
     default:
       return state;
   }

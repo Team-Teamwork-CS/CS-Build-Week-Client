@@ -25,7 +25,6 @@ export const createTileLayout = data => {
       container.push(3);
     }
   });
-  console.log("container", container);
 
   const array1 = container.slice(0, 10);
   const array2 = container.slice(10, 20);
@@ -37,20 +36,6 @@ export const createTileLayout = data => {
   const array8 = container.slice(70, 80);
   const array9 = container.slice(80, 90);
   const array10 = container.slice(90, 100);
-  console.log("array1", array1);
-
-  // let testArray = [
-  //   array1,
-  //   array2,
-  //   [1, 2, 3, 3, 2, 2, 1, 1, 1, 3],
-  //   [1, 2, 3, 3, 2, 2, 1, 1, 1, 3].reverse(),
-  //   [1, 2, 3, 3, 2, 2, 1, 1, 1, 3],
-  //   [1, 2, 3, 3, 2, 2, 1, 1, 1, 3].reverse(),
-  //   [1, 2, 3, 3, 2, 2, 1, 1, 1, 3],
-  //   [1, 2, 3, 3, 2, 2, 1, 1, 1, 3].reverse(),
-  //   [1, 2, 3, 3, 2, 2, 1, 1, 1, 3],
-  //   [1, 2, 3, 3, 2, 2, 1, 1, 1, 6]
-  // ];
 
   return [
     array1,

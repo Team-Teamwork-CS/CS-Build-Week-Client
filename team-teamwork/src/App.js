@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import SignIn from "./Components/Auth/SignIn";
@@ -9,6 +9,16 @@ import Home from "./Components/home/home.js";
 import World from "./features/world";
 import Dialog from "./Components/Dialog/Dialog";
 import Inventory from "./Components/Inventory/Inventory";
+
+const Container = () => {
+  return (
+    <div className="gameContainer" style={{ maxWidth: 1400, margin: "auto" }}>
+      <World />
+      <Dialog />
+      <Inventory />
+    </div>
+  );
+};
 
 function App() {
   return (
@@ -29,20 +39,7 @@ function App() {
           path="/signup"
           render={props => <SignUp history={props.history} />}
         />
-        <Route
-          exact
-          path="/game"
-          render={() => (
-            <div
-              className="gameContainer"
-              style={{ maxWidth: 1400, margin: "auto" }}
-            >
-              <World />
-              <Dialog />
-              <Inventory />
-            </div>
-          )}
-        />
+        <ProtectedRoute exact path="/game" component={Container} />
       </Router>
     </div>
   );

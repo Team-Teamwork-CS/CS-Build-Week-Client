@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import Axios from 'axios'
+import React, { useState } from "react";
+import axios from "axios";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -15,10 +15,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
 function Copyright(props) {
- 
-
-  
-
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
@@ -58,28 +54,28 @@ export default function SignUp(props) {
     username: "",
     password1: "",
     password2: ""
-  })
+  });
 
   const handleChange = e => {
-    e.persist()
+    e.persist();
     setInputs(inputs => ({
       ...inputs,
       [e.target.name]: e.target.value
-    }))
-    console.log(inputs)
-  }
+    }));
+    console.log(inputs);
+  };
 
-  const handleLogin = e => {
-    e.preventDefault()
-    Axios
-      .post("https://lambda-mud-test.herokuapp.com/api/registration/", inputs)
+  const handleSignUp = e => {
+    e.preventDefault();
+    axios
+      .post("https://teamwork-mud.herokuapp.com/api/registration/", inputs)
       .then(res => {
-        localStorage.setItem("csbuildweek1", res.data.key)        
+        props.history.push("/signin");
       })
       .catch(err => {
-        console.log("error", err)
-      })
-  }
+        console.log("error", err);
+      });
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -91,10 +87,10 @@ export default function SignUp(props) {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form onSubmit={handleLogin} className={classes.form} >
+        <form onSubmit={handleSignUp} className={classes.form}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
-              <TextField                
+              <TextField
                 name="username"
                 value={inputs.username}
                 variant="outlined"
@@ -112,8 +108,9 @@ export default function SignUp(props) {
                 required
                 fullWidth
                 name="password1"
+                type="password"
                 value={inputs.password1}
-                label="password"           
+                label="password"
                 onChange={handleChange}
               />
             </Grid>
@@ -123,12 +120,12 @@ export default function SignUp(props) {
                 required
                 fullWidth
                 name="password2"
+                type="password"
                 value={inputs.password2}
                 label="Confirm password"
                 onChange={handleChange}
               />
             </Grid>
-            
           </Grid>
           <Button
             type="submit"
@@ -141,7 +138,7 @@ export default function SignUp(props) {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/signin" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>

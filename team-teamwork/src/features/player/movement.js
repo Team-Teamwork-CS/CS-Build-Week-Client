@@ -1,16 +1,17 @@
 import store from "../../config/store";
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from "../../config/constants";
+import axios from "axios";
 
 export default function handleMovement(player) {
   function getNewPosition(oldPos, direction) {
     switch (direction) {
-      case "WEST":
+      case "w":
         return [oldPos[0] - SPRITE_SIZE, oldPos[1]];
-      case "EAST":
+      case "e":
         return [oldPos[0] + SPRITE_SIZE, oldPos[1]];
-      case "NORTH":
+      case "n":
         return [oldPos[0], oldPos[1] - SPRITE_SIZE];
-      case "SOUTH":
+      case "s":
         return [oldPos[0], oldPos[1] + SPRITE_SIZE];
     }
   }
@@ -41,36 +42,56 @@ export default function handleMovement(player) {
     });
   }
 
+  function dispatchDialog(dialog) {
+    store.dispatch({
+      type: "ADD_TEXT",
+      payload: dialog
+    });
+  }
+
   function attemptMove(direction) {
     const oldPos = store.getState().player.position;
     const newPos = getNewPosition(oldPos, direction);
-
-    if (
-      observeBoundaries(oldPos, newPos) &&
-      observeImpassable(oldPos, newPos)
-    ) {
-      dispatchMove(newPos);
-    }
+    axios
+      .post("https://teamwork-mud.herokuapp.com/api/adv/move/", { direction })
+      .then(res => {
+        console.log(res.data);
+        if (
+          observeBoundaries(oldPos, newPos) &&
+          observeImpassable(oldPos, newPos)
+        ) {
+          dispatchMove(newPos);
+          dispatchDialog(res.data.description);
+        }
+      })
+      .catch(err => console.log(err.response.data));
   }
 
   function handleKeyDown(e) {
     e.preventDefault();
     switch (e.keyCode) {
       case 37:
-        return attemptMove("WEST");
+        return attemptMove("w");
       case 38:
-        return attemptMove("NORTH");
+        return attemptMove("n");
       case 39:
-        return attemptMove("EAST");
+        return attemptMove("e");
       case 40:
-        return attemptMove("SOUTH");
+        return attemptMove("s");
       default:
         console.log(e.keyCode);
     }
   }
 
   window.addEventListener("keydown", e => {
-    handleKeyDown(e);
+    if (
+      e.keyCode === 37 ||
+      e.keyCode === 38 ||
+      e.keyCode === 39 ||
+      e.keyCode === 40
+    ) {
+      handleKeyDown(e);
+    }
   });
 
   return player;
