@@ -17,12 +17,20 @@ export const createTileLayout = data => {
   data.rooms.forEach((d, index) => {
     const item = JSON.parse(d);
 
-    if (item.name === "Grass") {
+    if (item.name === "The Mountains") {
       container.push(1);
-    } else if (item.name === "Bush") {
+    } else if (item.name === "The Forest") {
       container.push(2);
-    } else if (item.name === "Rock") {
+    } else if (item.name === "The Rough") {
       container.push(3);
+    } else if (item.name === "The Desert") {
+      container.push(4);
+    } else if (item.name === "The Bush") {
+      container.push(5)
+    } else if (item.name === "The Grasslands") {
+      container.push(6)
+    } else if (item.name === "The River") {
+      container.push(7)
     }
   });
 

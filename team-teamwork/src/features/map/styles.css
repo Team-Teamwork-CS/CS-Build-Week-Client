@@ -2,23 +2,47 @@
   display: inline-flex;
 }
 
-.grass {
+.grasslands {
   background-image: url("/tiles/grass.png");
   background-size: contain;
 }
 
 .bush {
   background-image: url("/tiles/LongLeaves_s.jpg");
-  background-size: contain;
+  background-size: cover;
 }
 
-.rock {
+.rough {
   background-image: url("/tiles/Rock1Seamless.png");
   background-size: contain;
 }
 
 .treasure {
   background-image: url("/tiles/treasures.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.mountain {
+  background-image: url("/tiles/landscape_rand1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.forest {
+  background-image: url("/tiles/baum.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.desert {
+  background-image: url("/tiles/sand.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.river {
+  background-image: url("/tiles/tex_Water.jpg");
   background-repeat: no-repeat;
   background-size: contain;
 }

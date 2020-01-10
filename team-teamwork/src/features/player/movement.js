@@ -57,8 +57,7 @@ export default function handleMovement(player) {
       .then(res => {
         console.log(res.data);
         if (
-          observeBoundaries(oldPos, newPos) &&
-          observeImpassable(oldPos, newPos)
+          observeBoundaries(oldPos, newPos)
         ) {
           dispatchMove(newPos);
           dispatchDialog(res.data.description);
